@@ -1,6 +1,6 @@
 ### ChronoSphere: Echoes of Time  
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)  
-[![MIT License](https://img.shields.io/badge/License-MIT-green)](https://choosealicense.com/licenses/mit/)  
+[![Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A time-bending puzzle adventure game built with Python and Pygame. Manipulate time to solve paradoxes and rebuild the ChronoSphere!  
 

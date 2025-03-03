@@ -105,9 +105,9 @@ while running:
     if keys[pygame.K_d]:
         dx = PLAYER_SPEED
 
-    # Update player position
-    game.player_pos.x += dx
-    game.player_pos.y += dy
+    # Update player position with screen boundary constraints
+    game.player_pos.x = max(0, min(WIDTH, game.player_pos.x + dx))
+    game.player_pos.y = max(0, min(HEIGHT, game.player_pos.y + dy))
 
     # Laser puzzle logic
     for laser in game.lasers:
@@ -127,9 +127,12 @@ while running:
     # Update UI
     shard_text.set_text(f"ChronoShards: {game.chronoshards}")
 
-    # Save checkpoint every frame
-    laser_states = [{"rect": l["rect"].copy(), "active": l["active"]} for l in game.lasers]
-    game.rewind.add_checkpoint(game.player_pos.copy(), laser_states)
+   # Save checkpoint every 0.5 seconds
+   checkpoint_timer += time_delta
+   if checkpoint_timer >= 0.5:
+   laser_states = [{"rect": l["rect"].copy(), "active": l["active"]} for l in game.lasers]
+   game.rewind.add_checkpoint(game.player_pos.copy(), laser_states)
+   checkpoint_timer = 0
 
     # Draw everything
     screen.fill(BACKGROUND)
